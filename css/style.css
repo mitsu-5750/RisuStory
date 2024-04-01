@@ -1,43 +1,81 @@
 html {
-	font-size: 2vw;
+	font-size: 1vw;
 }
 
-.fade { 
-	width: 100px;
-	height: 100px;
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-size: 3rem;
+}
+
+main-view {
 	position: fixed;
-	top: 0;
-	right: 0;
+	width: 60rem;
+	height: 90rem;
+	margin: auto;
+	inset: 0;
+}
+
+main-view > * {
+	position: absolute;
+}
+
+text-window {
 	bottom: 0;
 	left: 0;
-	margin: auto;
-	transition: 1s;
-}
-
-.textWindow {
-	position: fixed;
-	bottom: 1rem;
-	left: 0;
-	right: 0;
-	margin: auto;
-	width: 48rem;
-	height: 10rem;
+	width: 100%;
+	height: 20rem;
 	color: #eee;
+	box-shadow: 0 0 5rem rgba(0, 0, 0, 0);
 }
 
 .textWindow_text {
-	background-color: #6e3c3c;
-	padding: 3rem 1rem 1rem 1rem;
-	border-radius: 1rem;
+	background-color: #413131;
+	padding: 2rem 1rem;
 	width: 100%;
 	height: 100%;
 }
 
 .textWindow_name {
 	position: absolute;
-	top: 0.5rem;
-	left: 0.5rem;
-	border-radius: .8rem;
-	padding: .5rem 1rem;
+	top: -5rem;
+	left: 0;
+	padding: 1rem;
+	width: 15rem;
 	background-color: #a54ea8;
+	rotate: -5deg;
+	z-index: 100;
+
+}
+
+like-value {
+	top: 0;
+	right: 0;
+	width: 10rem;
+	height: 10rem;
+	color: #FFF;
+	background-color: red;
+}
+
+parson-list {
+	width: 100%;
+	height: 50rem;
+	bottom: 20rem;
+}
+
+parson-img {
+	position: absolute;
+	width: 10rem;
+	height: 100%;
+	bottom: 0;
+}
+
+@keyframes jump {
+    0% {
+        bottom: 0
+    }
+    100% {
+        bottom: 10%;
+    }
 }

@@ -1,31 +1,36 @@
 'use strict';
 
-class View extends HTMLElement {
+class MainView extends HTMLElement {
 	constructor() {
 		super();
 		this.innerHTML = `
-<text-window name="aaa" text="bbb">
-`
+<parson-list></parson-list>
+<text-window></text-window>
+<like-value></like-value>
+`;
 		this.child = {
-			textWindow: document.querySelector('text-window'),
-		}
+			parsonList: this.querySelector('parson-list'),
+			textWindow: this.querySelector('text-window'),
+		};
+		this.bgm = 0;
 	}
 
-	static get observedAttributes() {
-		return ['json'];
-	}
+	run(data, position=-1) {
+		let index = position;
 
-	attributeChangedCallback(property, oldValue, newValue) {
-		if (oldValue === newValue) {
-			return;
-		}
-		this[property] = newValue;
-		if (property === 'json') {
-			this.json = this.json;
-		}
+		this.addEventListener('click', () => {
+			index++;
+			if (!data[index]) {
+				return;
+			}
+			for (let func of data[index]) {
+				func();
+			}
+		});
 	}
 }
-customElements.define('main-view', View);
+customElements.define('main-view', MainView);
+
 
 class TextWindow extends HTMLElement {
 	constructor() {
@@ -33,44 +38,50 @@ class TextWindow extends HTMLElement {
 		this.innerHTML = `
 <div class="textWindow_name"></div>
 <div class="textWindow_text"></div>
-`
+`;
 		this.child = {
 			name: this.querySelector('.textWindow_name'),
 			text: this.querySelector('.textWindow_text'),
 		}
+
+		this.text = '';
+		this.name = '';
+		this.nameColor = '';
+		this.voice = null;
 	}
 
-	static get observedAttributes() {
-		return ['name', 'text', 'fllow',];
+	setData(parson, text) {
+		this.name = parson.name;
+		this.child.name.innerHTML = parson.name;
+		this.nameColor = parson.color;
+		this.child.name.style.backgroundColor = parson.color;
+		this.fllowText(text);
 	}
 
-	attributeChangedCallback(property, oldValue, newValue) {
-		if (oldValue === newValue) {
-			return;
-		}
-		this[property] = newValue;
-		if (property === 'name') {
-			this.child.name.textContent = this.name;
-		}
-		if (property === 'text') {
-			this.child.text.textContent = this.text;
-		}
-		if (property === 'fllow') {
-			this.fllowText(this.fllow);
-		}
+	setDataOfValue(name, text, color) {
+		this.name = name;
+		this.child.name.innerHTML = name;
+		this.nameColor = color;
+		this.child.name.style.backgroundColor = color;
+		this.fllowText(text);
+	}
+
+	setText(text) {
+		this.text = text;
+		this.child.text.innerHTML = text;
 	}
 
 	fllowText(text) {
-		let length = -1;
+		let length = 0;
 		const _ = () => {
 			setTimeout(() => {
-				this.setAttribute('text', text.substring(0, length));
+				this.setText(text.substring(0, length));
 				if (length > text.length) {
 					return;
 				} else {
 					_();
 				}
-			}, 100);
+			}, 10);
 			length++;
 		}
 		_();
@@ -78,40 +89,80 @@ class TextWindow extends HTMLElement {
 }
 customElements.define('text-window', TextWindow);
 
-class Person extends HTMLElement {
-	constructor() {
+class ParsonImg extends HTMLElement {
+	constructor(name, color) {
 		super();
+		this.name = name;
+		this.color = color;
+		this.ImgPath = '';
 		this.innerHTML = `
-<img>
-`
+<img class="parsonList_parsonImg">
+`;
 		this.child = {
-			img: this.querySelector('.textWindow_name'),
-		}
+			img: this.querySelector('img'),
+		};
 	}
 
-	static get observedAttributes() {
-		return ['imgPath', 'jump',];
-	}
-
-	attributeChangedCallback(property, oldValue, newValue) {
-		if (oldValue === newValue) {
-			return;
-		}
-		this[property] = newValue;
-		if (property === 'imgPath') {
-			this.child.img.src=this.imgPath;
-		}
-		if (property === 'isjump') {
-			if(!this.jump) {
-				return;
-			}
-			this.isjump();
-		}
+	setImgPath(ImgPath) {
+		this.ImgPath = ImgPath;
+		this.child.img.src = ImgPath;
 	}
 
 	jump() {
-		alert(0);
-		this.removeAttribute('isjump');
+		this.style = {};
+		setTimeout(()=> this.style.animation = 'jump .2s alternate 2 running', 1);
 	}
 }
-customElements.define('per-son', Person);
+customElements.define('parson-img', ParsonImg);
+
+class ParsonList extends HTMLElement {
+	constructor() {
+		super();
+		this.ou = new ParsonImg();
+		this.appendChild(this.ou);
+		this.ou.setImgPath('../img/risu.png');
+		this.ou.color = '#fff';
+
+		this.konomi = new ParsonImg('好', '#9d5b8b');
+		this.konomi.setImgPath('../img/risu.png');
+
+		this.yuuma = new ParsonImg('ゆうま', '#84ad54');
+		this.yuuma.setImgPath('../img/risu.png');
+
+		this.mitsu = new ParsonImg('みつ', '#ee7800');
+		this.mitsu.setImgPath('../img/risu.png');
+
+		this.yuuta = new ParsonImg('ゆうた', '#ee7800');
+		this.yuuta.setImgPath('../img/risu.png');
+
+		this.ai = new ParsonImg('あい', '#ee7800');
+		this.ai.setImgPath('../img/risu.png');
+	}
+}
+customElements.define('parson-list', ParsonList);
+
+
+class LikeValue extends HTMLElement {
+	constructor() {
+		super();
+		this.innerHTML = 0;
+		this.limit = 0;
+	}
+
+	addValue(value) {
+		this.value = this.value + value;
+		if (this.value > 100) {
+			this.value = 100;
+		}
+		this.innerHTML = this.value;
+	}
+
+	removeValue(value) {
+		this.value = this.value - value;
+		if (this.value <= 0) {
+			alert('ゲームオーバー');
+		}
+		this.innerHTML = this.value;
+	}
+}
+customElements.define('like-value', LikeValue);

@@ -1,24 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<script src="https://cdn.tailwindcss.com"></script>
+	<title>リスカフェ</title>
 	<link rel="stylesheet" href="../css/style.css">
-	<!-- <script src="../js/components.js"></script> -->
-
 </head>
 
 <body>
-	<main-view json='{
-		"datas": [
-			
-		]
-	}'></main-view>
-	<per-son></per-son>
+	<main-view></main-view>
 	<script src="../js/components.js"></script>
+	<script>
+		const mainView = document.querySelector('main-view');
+		const c = mainView.child;
+		mainView.run([
+			[() => alert('???')],
+			[() => c.textWindow.setDataOfValue('???', '見つけたぞ！捕らえろ！', '#000'),],
+			[() => c.textWindow.setDataOfValue('???', 'しつっこい！', c.parsonList.ou.color), () => c.parsonList.ou.jump(),],
+			[() => c.textWindow.setDataOfValue('???', 'どこた！いったいどこにある、、？', c.parsonList.ou.color),],
+			[() => c.textWindow.setDataOfValue('???', '！行き止まり、、', c.parsonList.ou.color),],
+			[() => c.textWindow.setDataOfValue('???', '観念しろ侵入者！', '#000')],
+			[() => c.textWindow.setDataOfValue('???', 'まだだ、俺はまだ捕まるわけにはいかない、、、', c.parsonList.ou.color),],
+			[() => c.textWindow.setDataOfValue('???', 'あの扉を見つけるまでは！', c.parsonList.ou.color),],
+			[() => alert('フェードアウト')],
+			[() => alert('森')],
+			[() => c.textWindow.setData(c.parsonList.konomi, 'やっと着いた～！'),],
+			[() => c.textWindow.setData(c.parsonList.yuuma, 'ここがシマリスがたくさんいると噂されている森？'),],
+			[() => c.textWindow.setData(c.parsonList.konomi, 'そう！ここは昔からシマリスと会えるで有名なシマリススポット！'),],
+			[() => c.textWindow.setData(c.parsonList.konomi, 'シマリスが好きな私からしたら、世界遺産って言っても過言ではないわ！'),],
+			[() => c.textWindow.setData(c.parsonList.mitsu, 'シマリス会えるだけで世界遺産判定なんだ、'),],
+			[() => c.textWindow.setData(c.parsonList.konomi, 'なんか文句ある？'),],
+			[() => c.textWindow.setData(c.parsonList.mitsu, 'なんでもないです。。。'),],
+			[() => c.textWindow.setData(c.parsonList.ai, 'まさか2025計画の12月最後のカレンダーがシマリスになるとはね'),],
+			[() => c.textWindow.setData(c.parsonList.yuuta, 'カレンダーの最後がシマリスで本当にいいのか？'),],
+			[() => c.textWindow.setData(c.parsonList.konomi, 'なんか文句ある？'),],
+			[() => c.textWindow.setData(c.parsonList.yuuta, 'なんでもないです。。。'),],
+			[() => c.textWindow.setData(c.parsonList.ai, '好怖、、、'),],
+			[() => c.textWindow.setData(c.parsonList.ai, 'あ！みんな見て～あそこに映えそうな木があるよ！みんなで撮ろ！'),],
+			[() => c.textWindow.setData(c.parsonList.yuuma, 'いいね！えもえものえもだ！'),],
+			[() => c.textWindow.setDataOfValue('', '亜依の呼びかけと共にりすちゃメンバーは木に向かった', '#000'),],
+			[() => c.textWindow.setDataOfValue('', 'ただ一人を除いて', '#000'),],
+			[() => c.textWindow.setData(c.parsonList.konomi, 'シマリスどこだ、、、、シマリスどこだ、、、、'),],
+			[() => c.textWindow.setDataOfValue('', 'そう彼女はシマリスのことになると周りが見えなくなってしまう', '#000'),],
+			[() => c.textWindow.setDataOfValue('', '亜依の言葉よりも写真よりもイケメンの次にシマリスが好きなのだ', '#000'),],
+			[() => c.textWindow.setData(c.parsonList.konomi, 'ん、あれって'),],
+			[() => alert('シマリスの写真')],
+			[() => c.textWindow.setData(c.parsonList.konomi, '野生のシマリスだ！（大声）'),],
+			[() => alert('声に反応してシマリスが逃げる。')],
+			[() => c.textWindow.setData(c.parsonList.konomi, 'あ！まって！'),],
+			[() => c.textWindow.setData(c.parsonList.konomi, '絶対捕まえて、2ショットとるんだから！'),],
+			[() => c.textWindow.setData(c.parsonList.konomi, 'はぁ、はぁ、見失っちゃった。'),],
+			[() => c.textWindow.setData(c.parsonList.konomi, 'って、なにこれ'),],
+			[() => c.textWindow.setDataOfValue('', '好が目にしたものは、自然現象でできた穴にしては多きすぎる穴があった', '#000'),],
+			[() => c.textWindow.setData(c.parsonList.konomi, '底が見えな、こんなところに落ちたら死んじゃうよ'),],
+			[() => c.textWindow.setDataOfValue('', '危険を感じその場を立ち去ろうとした', '#000'),],
+			[() => c.textWindow.setData(c.parsonList.konomi, 'しかし'),],
+			[() => alert('風の音')],
+			[() => c.textWindow.setData(c.parsonList.konomi, 'うわ！何！？'),],
+			[() => c.textWindow.setDataOfValue('', '穴の中から吸い込まれる大きな風が吹いていた', '#000'),],
+			[() => c.textWindow.setData(c.parsonList.konomi, 'すごい風、、、吸い込まれる、、、！'),],
+			[() => c.textWindow.setData(c.parsonList.konomi, 'うわーーーーー！！！'),],
+			[() => alert('場面を切り替える')],
+			[() => c.textWindow.setData(c.parsonList.ai, 'いいね！みんないい感じに写ってる！やっぱりBrealだね！'),],
+			[() => c.textWindow.setData(c.parsonList.ai, 'あれ、好は？'),],
+			[() => alert('ー真っ暗背景ー')],
+
+			[() => c.textWindow.setData(c.parsonList.konomi, '。。。'),],
+			[() => c.textWindow.setData(c.parsonList.konomi, 'ん、、、'),],
+			[() => c.textWindow.setData(c.parsonList.konomi, 'あれ、、'),],
+			[() => c.textWindow.setData(c.parsonList.konomi, '私何してたんだっけ、'),],
+			[() => c.textWindow.setData(c.parsonList.konomi, '確か、みんなでシマリスさがしてて、'),],
+			[() => c.textWindow.setData(c.parsonList.konomi, '、、、'),],
+			[() => c.textWindow.setData(c.parsonList.konomi, ''),],
+			[() => c.textWindow.setData(c.parsonList.konomi, ''),],
+			[() => c.textWindow.setData(c.parsonList.konomi, ''),],
+			[() => c.textWindow.setData(c.parsonList.konomi, ''),],
+			[() => c.textWindow.setData(c.parsonList.konomi, ''),],
+			[() => c.textWindow.setData(c.parsonList.konomi, ''),],
+			[() => c.textWindow.setData(c.parsonList.konomi, ''),],
+			[() => c.textWindow.setData(c.parsonList.konomi, ''),],
+			[() => c.textWindow.setData(c.parsonList.konomi, ''),],
+			[() => c.textWindow.setData(c.parsonList.konomi, ''),],
+
+
+
+
+
+
+
+
+
+
+
+		], 8);
+	</script>
 </body>
 
 </html>
+ー真っ暗背景ー
+好　。。。
+好　ん、、、
+好　あれ、、
+好　私何してたんだっけ、、
+好　確か、みんなでシマリスさがしてて、
+好　、、、
+？？？　おい
+好　思い出せない、、、
+？？？　おい！起きろ人間！
+ばちっっ
+好　はっ！
+ー主人公立ち絵挿入ー
+好　いったーーーー！
+好　なにするの！？
+主人公　やっと起きたか人間
+好　あなた、誰？
+主人公　事情は後で説明する、今は俺についてこい。
+好　初対面で名前も教えてくれない人についていきたくありません！
+主人公　いいから！すべこべ言わずについてこい！
+手を引っ張る
+好　だから！あなたについていきたくありません！
+好　こうなったら、、、
+好 きゃーー！この人痴漢です！（大声）
+主人公　はぁ！？痴漢じゃねぇし！てか大声出すな！
+周りの声　ざわざわ
+好　今だ！
+好はダッシュで逃げた
+主人公　あ、おい！
+
+
+ー風景変えるー
+好　はぁ、普段そんなに走らないから足が痛い。
+好　あと、ここはどこ？
+好　見たことのない建物ばっかり
+好　それに、何だか懐かしい匂いがする？
+？？？そこの女！
+好　今度は誰！
+？？？　貴様そこで何をしている！
+好　何って、目が覚めたら知らない男について来いと言われて、
+好　その前は、大きな穴に吸い込まれたような、、、、
+？？？　何をわけのわからないことを言っている！
+？？？　それに貴様、なぜしっぽがついていない？
+好　しっぽ？あ、
+突然現れた男性の腰には尻尾があった
+好　あの尻尾、動いてる！
+？？？　まさかお前、人間？
+？？？ほんとに人間だとしたら大変なことになる
+？？？貴様！こっちにこい
+再び腕を引っ張られる
+好　痛い、放して！
+（主人公の立ち絵が右から左へ素早く移動するエフェクト作る）
+好　うわ！
+ー場面切り替えー
+主人公　危なかったな、
+好　あなたはさっきの！あの人は誰？
+好　あ、質問に答えてくれない人だっけ？ならもういいや
+主人公　、、、
+主人公 事情も知らないで連れて行かせるのは疑うのも当然だし正直焦っていた、悪かった。
+好　（あれ、意外と素直）
+好　それで、あなたは誰？ここはどこなの？
+主人公　俺の名前は？？？？（後で決める）
+主人公　ここは自然豊かな国　
+主人公　その名も
+主人公　りすちゃ大国だ
+ーフェードインー
+ーからのタイトル画面がでるー
