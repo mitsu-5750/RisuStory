@@ -15,7 +15,7 @@ class MainView extends HTMLElement {
 		this.bgm = 0;
 	}
 
-	run(data, position=-1) {
+	run(data, position = -1) {
 		let index = position;
 
 		this.addEventListener('click', () => {
@@ -90,27 +90,48 @@ class TextWindow extends HTMLElement {
 customElements.define('text-window', TextWindow);
 
 class ParsonImg extends HTMLElement {
-	constructor(name, color) {
+	constructor(name, nameValue, color) {
 		super();
 		this.name = name;
+		this.nameValue = nameValue;
 		this.color = color;
-		this.ImgPath = '';
 		this.innerHTML = `
 <img class="parsonList_parsonImg">
 `;
 		this.child = {
 			img: this.querySelector('img'),
 		};
+		this.setImgPath('defo');
+		this.setIsView(false);
+		this.setX(0);
 	}
 
 	setImgPath(ImgPath) {
 		this.ImgPath = ImgPath;
-		this.child.img.src = ImgPath;
+		this.child.img.src = `../img/parsons/${this.nameValue}/${ImgPath}.png`;
+		return this;
+	}
+
+	setIsView(isView) {
+		this.isView = isView;
+		if (isView) {
+			this.classList.add('parsonList_parsonImg__isView');
+		} else {
+			this.classList.remove('parsonList_parsonImg__isView');
+		}
+		return this;
+	}
+
+	setX(x) {
+		this.x = x;
+		this.style.left = `${x}%`;
+		return this;
 	}
 
 	jump() {
 		this.style = {};
-		setTimeout(()=> this.style.animation = 'jump .2s alternate 2 running', 1);
+		setTimeout(() => this.style.animation = 'jump .2s alternate 2 running', 1);
+		return this;
 	}
 }
 customElements.define('parson-img', ParsonImg);
@@ -118,25 +139,16 @@ customElements.define('parson-img', ParsonImg);
 class ParsonList extends HTMLElement {
 	constructor() {
 		super();
-		this.ou = new ParsonImg();
-		this.appendChild(this.ou);
-		this.ou.setImgPath('../img/risu.png');
-		this.ou.color = '#fff';
-
-		this.konomi = new ParsonImg('好', '#9d5b8b');
-		this.konomi.setImgPath('../img/risu.png');
-
-		this.yuuma = new ParsonImg('ゆうま', '#84ad54');
-		this.yuuma.setImgPath('../img/risu.png');
-
-		this.mitsu = new ParsonImg('みつ', '#ee7800');
-		this.mitsu.setImgPath('../img/risu.png');
-
-		this.yuuta = new ParsonImg('ゆうた', '#ee7800');
-		this.yuuta.setImgPath('../img/risu.png');
-
-		this.ai = new ParsonImg('あい', '#ee7800');
-		this.ai.setImgPath('../img/risu.png');
+		this.konomi = new ParsonImg('好', 'konomi', '#9d5b8b');
+		this.appendChild(this.konomi);
+		this.yuuma = new ParsonImg('ゆうま', 'yuuma', '#84ad54');
+		this.appendChild(this.yuuma);
+		this.mitsu = new ParsonImg('みつ', 'mitsu', '#ee7800');
+		this.appendChild(this.mitsu);
+		this.yuuta = new ParsonImg('ゆうた', 'yuuta', '#ee7800');
+		this.appendChild(this.yuuta);
+		this.ai = new ParsonImg('あい', 'ai', '#ee7800');
+		this.appendChild(this.ai);
 	}
 }
 customElements.define('parson-list', ParsonList);

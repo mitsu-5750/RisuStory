@@ -60,22 +60,34 @@ like-value {
 
 parson-list {
 	width: 100%;
-	height: 50rem;
-	bottom: 20rem;
+	height: 100%;
 }
 
 parson-img {
 	position: absolute;
-	width: 10rem;
-	height: 100%;
-	bottom: 0;
+	width: 30rem;
+	height: 70rem;
+	bottom: 0rem;
+	visibility: hidden;
+	opacity: 0;
+	transition: 0.5s;
 }
+
+.parsonList_parsonImg {
+	height: 100%;
+}
+
+.parsonList_parsonImg__isView {
+	visibility: inherit;
+	opacity: 1;
+}
+
 
 @keyframes jump {
     0% {
-        bottom: 0
+        bottom: 0rem
     }
     100% {
-        bottom: 10%;
+        bottom: 3rem;
     }
 }
