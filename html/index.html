@@ -24,7 +24,7 @@
 			[() => c.textWindow.setDataOfValue('???', 'まだだ、俺はまだ捕まるわけにはいかない、、、', c.parsonList.ou.color),],
 			[() => c.textWindow.setDataOfValue('???', 'あの扉を見つけるまでは！', c.parsonList.ou.color),],
 			[() => console.log('フェードアウト')],
-			[() => console.log('森')],
+			[() => console.log('森'), ()=> mainView.setBackImgPath('forest')],
 			[() => c.textWindow.setData(c.parsonList.konomi, 'やっと着いた～！'), () => c.parsonList.yuuma.setIsView(true).setX(50), () => c.parsonList.ai.setIsView(true)],
 			[() => c.textWindow.setData(c.parsonList.yuuma, 'ここがシマリスがたくさんいると噂されている森？'), () => c.parsonList.yuuma.setImgPath('paku')],
 			[() => c.textWindow.setData(c.parsonList.konomi, 'そう！ここは昔からシマリスと会えるで有名なシマリススポット！'), () => c.parsonList.yuuma.setImgPath('defo')],

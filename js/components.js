@@ -13,12 +13,20 @@ class MainView extends HTMLElement {
 			textWindow: this.querySelector('text-window'),
 		};
 		this.bgm = 0;
+		this.setBackImgPath(null);
+	}
+
+	setBackImgPath(backImgPath) {
+		this.backImgPath = backImgPath;
+		if(backImgPath) {
+			document.body.style.backgroundImage = `url("../img/backs/${backImgPath}.png")`;
+		}
 	}
 
 	run(data, position = -1) {
 		let index = position;
 
-		this.addEventListener('click', () => {
+		document.addEventListener('click', () => {
 			index++;
 			if (!data[index]) {
 				return;
